@@ -1,14 +1,17 @@
-import "dotenv/config";
+import { config } from "dotenv";
+import { resolve } from "node:path";
 import { PrismaClient, Role } from "@prisma/client";
 import { hash } from "argon2";
+
+config({ path: resolve(__dirname, "../../../.env") });
 
 const prisma = new PrismaClient();
 
 async function main() {
   const password = process.env.ADMIN_PASSWORD;
   const adminEmail = process.env.ADMIN_EMAIL?.trim().toLowerCase();
-  if (!password || password.length < 12 || !adminEmail) {
-    throw new Error("Set ADMIN_EMAIL and an ADMIN_PASSWORD of at least 12 characters");
+  if (!password || password.length < 6 || !adminEmail) {
+    throw new Error("Set ADMIN_EMAIL and an ADMIN_PASSWORD of at least 6 characters");
   }
   const passwordHash = await hash(password);
 
