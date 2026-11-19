@@ -24,9 +24,9 @@
 
 Веб-приложение и API разворачиваются как два проекта из одного Git-репозитория:
 
-1. Создайте PostgreSQL-базу данных у провайдера, доступного из Vercel, и сохраните строку подключения.
+1. Создайте PostgreSQL-базу данных у провайдера, доступного из Vercel, и сохраните pooled и direct строки подключения.
 2. Импортируйте репозиторий в Vercel дважды. Для проекта сайта укажите **Root Directory** `apps/web`, для проекта API — `apps/api`. Разрешите Vercel доступ к файлам вне корневой директории проекта, так как оба workspace используют `packages/shared`.
-3. В проекте API задайте `DATABASE_URL`, `JWT_ACCESS_SECRET` и `JWT_REFRESH_SECRET`. Для секретов используйте разные случайные значения; не используйте значения из `.env.example`.
+3. В проекте API задайте `DATABASE_URL` (pooled connection string), `DIRECT_URL` (direct connection string), `JWT_ACCESS_SECRET` и `JWT_REFRESH_SECRET`. Для секретов используйте разные случайные значения; не используйте значения из `.env.example`.
 4. Разверните API и скопируйте его домен, например `https://mangystau-api.vercel.app`.
 5. В настройках проекта сайта задайте переменную `API_URL` равной домену API без завершающего слеша, например `https://mangystau-api.vercel.app`, затем разверните сайт.
 6. После настройки `DATABASE_URL` примените миграции из корня репозитория: `npx prisma migrate deploy --schema apps/api/prisma/schema.prisma`. Для создания администратора задайте `ADMIN_EMAIL` и `ADMIN_PASSWORD` (не короче 12 символов), затем выполните `npm run admin:reset`.
