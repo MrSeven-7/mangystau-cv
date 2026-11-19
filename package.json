@@ -1,0 +1,22 @@
+{
+  "name": "mangystau-cv",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n \"API,WEB\" -c \"cyan,green\" \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:web": "npm run dev --workspace @mangystau/web",
+    "dev:api": "npm run start:dev --workspace @mangystau/api",
+    "build": "npm run build --workspace @mangystau/web && npm run build --workspace @mangystau/api",
+    "db:generate": "prisma generate --schema apps/api/prisma/schema.prisma",
+    "db:migrate": "prisma migrate dev --schema apps/api/prisma/schema.prisma",
+    "db:seed": "npx --workspace @mangystau/api ts-node prisma/seed.ts",
+    "db:studio": "prisma studio --schema apps/api/prisma/schema.prisma",
+    "admin:reset": "npx --workspace @mangystau/api ts-node prisma/create-admin.ts"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}

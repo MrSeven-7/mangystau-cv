@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: #12231c;
+  background: #f8f9f6;
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+}
+
+/* Custom modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.a4-page {
+  width: 794px;
+  min-height: 1123px;
+  transform-origin: top left;
+}
+
+/* Dark mode overrides */
+html.dark body {
+  color: #e6efeb;
+  background: #111a17;
+}
+html.dark .bg-white {
+  background-color: #1b2924;
+}
+html.dark [class~="bg-white/85"] {
+  background-color: rgb(27 41 36 / .9);
+}
+html.dark [class~="bg-white/70"] {
+  background-color: rgb(27 41 36 / .78);
+}
+html.dark .bg-sand,
+html.dark [class~="bg-[#f6f7f4]"],
+html.dark [class~="bg-[#f8f9f6]"] {
+  background-color: #111a17;
+}
+html.dark [class~="bg-[#e8f2ed]"] {
+  background-color: #1a2b25;
+}
+html.dark [class~="bg-[#e9ecea]"] {
+  background-color: #17221e;
+}
+html.dark .bg-emerald-50 {
+  background-color: #1a3a30;
+}
+html.dark .bg-amber-50 {
+  background-color: #382c16;
+}
+html.dark .bg-slate-100 {
+  background-color: #24342e;
+}
+html.dark .bg-slate-200 {
+  background-color: #2c3e38;
+}
+html.dark .text-ink {
+  color: #e6efeb;
+}
+html.dark .text-slate-700 {
+  color: #d0ddd7;
+}
+html.dark .text-slate-600 {
+  color: #bdcbc5;
+}
+html.dark .text-slate-500 {
+  color: #a8b8b1;
+}
+html.dark .text-slate-400 {
+  color: #8e9e97;
+}
+html.dark .border-slate-100,
+html.dark .border-slate-200,
+html.dark .border-black\/5,
+html.dark .border {
+  border-color: #2d4239;
+}
+html.dark input,
+html.dark textarea,
+html.dark select {
+  color: #e6efeb;
+  background-color: #1b2924;
+}
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #8e9e97;
+}
+html.dark .a4-page,
+html.dark .a4-page .bg-white {
+  color: #182b25;
+  background-color: #ffffff;
+}
